@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Watchler Technologies — AI Operations Advisory. Fractional Chief AI Officer for owner-led companies. AI advice from someone who actually runs it.">
+<title>Watchler Technologies — AI Operations Advisory</title>
+<style>
+  :root{
+    --paper:#F6F7F5; --ink:#141A22; --body:#333B45; --mute:#66707C;
+    --line:#D8DCD9; --green:#1F6F53; --green-dot:#2E8B67; --amber:#B07A18;
+    --card:#FFFFFF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#10151C; --ink:#ECF0EE; --body:#C3CBD2; --mute:#7C8794;
+      --line:#26303A; --green:#52C08D; --green-dot:#52C08D; --amber:#D9A13F;
+      --card:#151C25;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10151C; --ink:#ECF0EE; --body:#C3CBD2; --mute:#7C8794;
+    --line:#26303A; --green:#52C08D; --green-dot:#52C08D; --amber:#D9A13F;
+    --card:#151C25;
+  }
+  :root[data-theme="light"]{
+    --paper:#F6F7F5; --ink:#141A22; --body:#333B45; --mute:#66707C;
+    --line:#D8DCD9; --green:#1F6F53; --green-dot:#2E8B67; --amber:#B07A18;
+    --card:#FFFFFF;
+  }
+  html,body{background:var(--paper);color:var(--body);margin:0;}
+  body{
+    font-family:Charter,Georgia,"Times New Roman",serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px 96px;}
+  .mono{font-family:ui-monospace,"SF Mono","Cascadia Code",Consolas,Menlo,monospace;}
+  .disp{
+    font-family:"Helvetica Neue","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    color:var(--ink);letter-spacing:-0.02em;font-weight:700;
+  }
+  /* masthead */
+  header{display:flex;justify-content:space-between;align-items:baseline;
+    padding:28px 0 20px;border-bottom:2px solid var(--ink);}
+  .wordmark{font-size:20px;font-weight:800;letter-spacing:0.01em;color:var(--ink);}
+  .wordmark span{font-weight:400;color:var(--mute);}
+  .mast-tag{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);}
+  @media(max-width:560px){.mast-tag{display:none;}}
+  /* hero */
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin:0 0 20px;}
+  h1{font-size:clamp(34px,5.4vw,52px);line-height:1.08;margin:0 0 24px;text-wrap:balance;}
+  .lede{font-size:20px;line-height:1.55;max-width:620px;margin:0;}
+  .lede b{color:var(--ink);font-weight:600;}
+  /* section scaffolding */
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  .sec-label{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin:0 0 28px;}
+  h2{font-size:26px;margin:0 0 16px;text-wrap:balance;}
+  /* status board */
+  .board{border:1px solid var(--line);background:var(--card);border-radius:4px;overflow:hidden;}
+  .board-head{display:flex;justify-content:space-between;align-items:center;
+    padding:10px 16px;border-bottom:1px solid var(--line);
+    font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mute);}
+  .board-rows{overflow-x:auto;}
+  .board table{width:100%;border-collapse:collapse;min-width:560px;}
+  .board td{padding:12px 16px;border-top:1px solid var(--line);font-size:14.5px;vertical-align:top;}
+  .board tr:first-child td{border-top:none;}
+  td.sys{color:var(--ink);font-weight:600;font-family:"Helvetica Neue","Segoe UI",system-ui,sans-serif;
+    font-size:14px;white-space:nowrap;}
+  td.st{white-space:nowrap;font-size:12.5px;}
+  td.gate{color:var(--mute);font-size:13.5px;}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green-dot);
+    margin-right:8px;vertical-align:1px;animation:pulse 2.6s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  @media(prefers-reduced-motion:reduce){.dot{animation:none;}}
+  .st .lbl{color:var(--green);letter-spacing:0.08em;}
+  .board-note{font-size:13px;color:var(--mute);margin:14px 2px 0;}
+  .gate .hm{color:var(--amber);}
+  /* stats strip */
+  .stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:36px;}
+  .stat .n{font-size:34px;font-weight:700;color:var(--ink);
+    font-family:"Helvetica Neue","Segoe UI",system-ui,sans-serif;letter-spacing:-0.02em;
+    font-variant-numeric:tabular-nums;}
+  .stat .l{font-size:13px;color:var(--mute);margin-top:2px;max-width:180px;line-height:1.4;}
+  /* services ledger */
+  .svc{border-top:1px solid var(--line);}
+  .svc-row{display:grid;grid-template-columns:56px 1fr auto;gap:20px;
+    padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  .svc-row .no{color:var(--mute);font-size:13px;}
+  .svc-row h3{margin:0 0 6px;font-size:18px;
+    font-family:"Helvetica Neue","Segoe UI",system-ui,sans-serif;color:var(--ink);
+    letter-spacing:-0.01em;font-weight:700;}
+  .svc-row p{margin:0;font-size:15.5px;color:var(--body);max-width:520px;}
+  .svc-row .price{font-size:15px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  @media(max-width:560px){.svc-row{grid-template-columns:40px 1fr;}.svc-row .price{grid-column:2;margin-top:6px;}}
+  /* principles */
+  .prin{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px;}
+  .prin h3{font-size:16px;margin:0 0 8px;color:var(--ink);
+    font-family:"Helvetica Neue","Segoe UI",system-ui,sans-serif;font-weight:700;}
+  .prin p{margin:0;font-size:15px;}
+  /* about + cta */
+  .about p{max-width:640px;margin:0 0 14px;}
+  .cta{padding:64px 0 0;border-bottom:none;text-align:left;}
+  .cta h2{font-size:30px;}
+  .cta .mail{display:inline-block;margin:18px 0 10px;padding:14px 22px;
+    background:var(--ink);color:var(--paper);text-decoration:none;border-radius:4px;
+    font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:16px;}
+  .cta .mail:focus-visible{outline:3px solid var(--green);outline-offset:3px;}
+  .cta p{max-width:560px;}
+  footer{margin-top:72px;padding-top:20px;border-top:2px solid var(--ink);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    font-size:12.5px;color:var(--mute);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="wordmark disp">WATCHLER<span> Technologies</span></div>
+    <div class="mast-tag mono">AI Operations Advisory</div>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow mono">Fractional Chief AI Officer · for owner-led companies</p>
+    <h1 class="disp">AI advice from someone who actually runs it.</h1>
+    <p class="lede">Kevin Watchler built an AI workforce inside his own construction company —
+      <b>70+ agents and automations doing real operational work</b>, with a human gate on every
+      consequential action. Watchler Technologies helps other owner-led businesses do the same,
+      <b>without the expensive mistakes</b>.</p>
+  </div>
+
+  <section>
+    <p class="sec-label mono">01 · Proof — a sample from our own books</p>
+    <div class="board">
+      <div class="board-head mono"><span>OPERATIONS BOARD</span><span>PRODUCTION</span></div>
+      <div class="board-rows">
+      <table>
+        <tr><td class="sys">Invoice drafting — nightly</td>
+            <td class="st mono"><span class="dot"></span><span class="lbl">RUNNING</span></td>
+            <td class="gate">~98% automated · <span class="hm">a person approves 100%</span></td></tr>
+        <tr><td class="sys">Purchase-order approval gate</td>
+            <td class="st mono"><span class="dot"></span><span class="lbl">LIVE</span></td>
+            <td class="gate"><span class="hm">dollar-threshold dual approval</span> · exactly-once send</td></tr>
+        <tr><td class="sys">AP invoice intake &amp; coding</td>
+            <td class="st mono"><span class="dot"></span><span class="lbl">RUNNING</span></td>
+            <td class="gate">email → coded &amp; filed · <span class="hm">human reviews every batch</span></td></tr>
+        <tr><td class="sys">Field daily-report portal</td>
+            <td class="st mono"><span class="dot"></span><span class="lbl">RUNNING</span></td>
+            <td class="gate">crews report from the field · office gets structured data</td></tr>
+        <tr><td class="sys">Vendor quote ingest &amp; routing</td>
+            <td class="st mono"><span class="dot"></span><span class="lbl">RUNNING</span></td>
+            <td class="gate">quotes read, filed, and compared automatically</td></tr>
+        <tr><td class="sys">Private on-prem document AI</td>
+            <td class="st mono"><span class="dot"></span><span class="lbl">RUNNING</span></td>
+            <td class="gate">sensitive documents <span class="hm">never leave the building</span></td></tr>
+      </table>
+      </div>
+    </div>
+    <p class="board-note">Real systems in production at a mid-size Southern California contractor.
+      Shown generically — client and project specifics stay confidential.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">70+</div><div class="l">agents &amp; automations in production</div></div>
+      <div class="stat"><div class="n">2h → 20m</div><div class="l">one document workflow, before → after</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">of money-moving actions approved by a person</div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-label mono">02 · Engagements — start anywhere, most start small</p>
+    <div class="svc">
+      <div class="svc-row">
+        <div class="no mono">01</div>
+        <div><h3>Executive AI Assessment</h3>
+          <p>Where AI pays in your business — and where it doesn't. A half-day with your team,
+             then written findings you own.</p></div>
+        <div class="price mono">$1,500</div>
+      </div>
+      <div class="svc-row">
+        <div class="no mono">02</div>
+        <div><h3>AI Roadmap</h3>
+          <p>A prioritized 12-month plan: sequenced opportunities, tool-neutral recommendations,
+             budget ranges, and a governance starter set.</p></div>
+        <div class="price mono">$3,000</div>
+      </div>
+      <div class="svc-row">
+        <div class="no mono">03</div>
+        <div><h3>First Implementation</h3>
+          <p>One workflow built, measured, and running in production — with approval gates, an
+             audit trail, and your team trained on it.</p></div>
+        <div class="price mono">$7,500</div>
+      </div>
+      <div class="svc-row">
+        <div class="no mono">04</div>
+        <div><h3>Fractional Chief AI Officer</h3>
+          <p>Ongoing executive ownership of AI adoption: vendor benchmarking before you sign,
+             governance, new workflows, and a monthly ROI report.</p></div>
+        <div class="price mono">monthly</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-label mono">03 · How we work</p>
+    <div class="prin">
+      <div>
+        <h3>Human gates by design</h3>
+        <p>Software drafts; people approve. The review gate is the design, not a limitation —
+           especially anywhere money moves.</p>
+      </div>
+      <div>
+        <h3>Vendor-neutral, always</h3>
+        <p>We run Claude, OpenAI, and private local models side by side in production. We don't
+           sell tools, so we don't care which one wins.</p>
+      </div>
+      <div>
+        <h3>Measured, not vibes</h3>
+        <p>Every automation carries a counter — hours saved, error rate, dollars. If it can't be
+           measured, it doesn't get built.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <p class="sec-label mono">04 · Who</p>
+    <h2 class="disp">Built it at home first.</h2>
+    <p>Kevin Watchler is the president of a mid-size Southern California construction company.
+       Since 2025 he has personally built and operated its AI layer — document pipelines,
+       procurement agents, billing automation, private on-prem inference — governed by written
+       policy and human approval gates.</p>
+    <p>Watchler Technologies exists so other owner-led companies can get that experience
+       <em>without</em> the two years of mistakes it took to earn it.</p>
+  </section>
+
+  <section class="cta">
+    <h2 class="disp">Start with an email.</h2>
+    <p>Describe your business in three sentences. You'll get back three places AI probably pays
+       in your operation — and one place it doesn't.</p>
+    <a class="mail" href="mailto:kevin@watchler.ai">kevin@watchler.ai</a>
+  </section>
+
+  <footer class="mono">
+    <span>© 2026 Watchler Technologies</span>
+    <span>watchler.ai</span>
+  </footer>
+</div>
+</body>
+</html>
